@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-c-gray
+  labels:
+    app: service-c-gray
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-c-gray
+  template:
+    metadata:
+      labels:
+        app: service-c-gray
+        sermant-injection: enabled
+    spec:
+      containers:
+        - name: service-c-gray
+          image: service-c:1.0.0
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: "SERVICE_META_VERSION"
+              value: "1.0.1"
+      imagePullSecrets:
+        - name: default-secret
