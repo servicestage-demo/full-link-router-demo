@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: service-c-gray
+  name: service-b-gray
   labels:
-    app: service-c-gray
+    app: service-b-gray
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: service-c-gray
+      app: service-b-gray
   template:
     metadata:
       labels:
-        app: service-c-gray
+        app: service-b-gray
         sermant-injection: enabled
     spec:
       containers:
-        - name: service-c-gray
-          image: service-c:1.0.0
+        - name: service-b-gray
+          image: service-b:1.0.0
           imagePullPolicy: IfNotPresent
           env:
             - name: "SERVICE_META_PARAMETERS"

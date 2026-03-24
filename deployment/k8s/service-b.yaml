@@ -19,5 +19,10 @@ spec:
         - name: service-b
           image: service-b:1.0.0
           imagePullPolicy: IfNotPresent
+          env:
+            - name: "SERVICE_META_PARAMETERS"
+              value: "group:base"
+            - name: "NACOS_ADDRESS"
+              value: "127.0.0.1:8848"
       imagePullSecrets:
         - name: default-secret

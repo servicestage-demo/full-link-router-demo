@@ -25,8 +25,8 @@ public class Controller {
     @Value("${spring.application.name}")
     private String name;
 
-    @Value("${service_meta_version:${SERVICE_META_VERSION:${service.meta.version:1.0.0}}}")
-    private String version;
+    @Value("${service_meta_parameters:${SERVICE_META_PARAMETERS:${service.meta.parameters:}}}")
+    private String parameters;
 
     /**
      * 测试方法
@@ -36,7 +36,7 @@ public class Controller {
     @GetMapping("service-a/hello")
     public Map<String, Object> hello() {
         Map<String, Object> map = new HashMap<>();
-        map.put("version", version);
+        map.put("parameters", parameters);
         Map<String, Object> result = new HashMap<>(restTemplate.getForObject(PROVIDER_URL, Map.class));
         result.put(name, map);
         return result;
